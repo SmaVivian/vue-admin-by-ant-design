@@ -1,0 +1,100 @@
+@import 'mixin.scss';
+
+#app {
+	height: 100%;
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ell {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.two-ell {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  display: -webkit-box;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.clearfix:after,.clearfix:before{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.fr {
+	float: right;
+}
+
+.fl {
+	float: left;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+// 主体区域
+.g-container {
+	min-width: 1200px;
+	min-height: 100%;
+	// min-height: 100%;
+	transition: margin-left .28s;
+	// margin-left: 180px;
+	position: relative;
+	// background: rgba(242,242,242,1);
+	padding-top: 60px;
+	box-sizing: border-box;
+	background-color: #f2f2f2;
+}
+
+.g-container.bg-none {
+	background-color: #fff;
+}
+
+.g-container.header-no {
+	padding-top: 0;
+}
+
+.g-wrap {
+	width: 1200px;
+  min-height: calc(100vh - 60px);
+	margin: 0 auto;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.g-warp.header-no {
+	padding-top: 0;
+}
+
+.g-no-data  {
+	margin-top: 60px;
+	.no-data-bg {
+		// margin: auto;
+		// width: 300px;
+		// height: 200px;
+		// background: url(~@/assets/images/no-data.png) center center no-repeat;
+		// background-size: contain;
+	}
+}
+
+// 按钮右边距
+.g-btns-mr {
+	margin-right: $btnsMargin;
+}
+
+// 左边距
+.g-btns-ml {
+	margin-left: $btnsMargin;
+}

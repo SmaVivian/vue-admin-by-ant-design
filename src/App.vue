@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="g-container" 
+      :class="{'header-no': !$store.getters.headerShow, 'bg-none': $store.getters.bodyBg === 'bgNone'}">
+      <cmp-header v-if="$store.getters.headerShow"></cmp-header>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import cmpHeader from '@cmp/Header'
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
-  }
+    cmpHeader
+  },
+  created() {
+    console.log(this.$store.getters)
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import './assets/css/reset.css';
+  // @import 'ant-design-vue/dist/antd.css';
+  @import '~@/assets/css/theme.scss';
+  // @import '~@/assets/css/resetCmp.scss';
 </style>
+
+

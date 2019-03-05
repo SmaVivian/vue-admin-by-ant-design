@@ -1,0 +1,19 @@
+<template>
+  <div class="page-exhibits">
+    讨论
+  </div>
+</template>
+
+<script>
+export default {
+  
+}
+</script>
+
+<style lang="scss" scoped>
+.page-exhibits {
+  background-color: #fff;
+}
+</style>
+
+
