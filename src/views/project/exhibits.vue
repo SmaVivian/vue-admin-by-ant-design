@@ -2,7 +2,7 @@
   <div class="page-exhibits">
     <div class="btns-warap clearfix">
       <div class="left fl">
-        <a-button class="g-btns-mr" type="primary">添加藏品</a-button>
+        <a-button class="g-btns-mr" type="primary" @click="addCollect">添加藏品</a-button>
         <a-button class="g-btns-mr" type="primary">添加藏品</a-button>
         <a-button class="g-btns-mr" type="primary">添加藏品</a-button>
         <a-button class="g-btns-mr" type="primary">添加藏品</a-button>
@@ -11,6 +11,7 @@
     </div>
 
     <a-table 
+
       :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
       :columns="columns"
       :dataSource="list"
@@ -24,10 +25,13 @@
       <!-- <a slot="name" slot-scope="text" href="javascript:;">{{text}}</a> -->
     </a-table>
     <span>TODO delete {{hasSelected}}</span>
+
+    <exhibits-modals ref="modal"></exhibits-modals>
   </div>
 </template>
 
 <script>
+import exhibitsModals from './modals/exhibits-modals'
 export default {
   filters: {
     statusFilter(status) {
@@ -38,6 +42,9 @@ export default {
       }
       return statusMap[status]
     }
+  },
+  components: {
+    exhibitsModals
   },
   data() {
     return {
@@ -85,7 +92,7 @@ export default {
           dataIndex: 'createTime',
           align:"center",
           sorter: true
-        },
+        }
         // {
         //   title: '操作',
         //   dataIndex: 'action',
@@ -109,7 +116,7 @@ export default {
         total: 0
       },
       list: [],
-      loading: true,
+      loading: true
     }
   },
   computed: {
@@ -120,6 +127,9 @@ export default {
     }
   },
   methods: {
+    addCollect() {
+      this.$refs.modal.init()
+    },
     getDataList() {
       this.loading = true
       this.$http.get('/list', {
@@ -133,12 +143,12 @@ export default {
       })
     },
     handleTableChange(pagination, filters, sorter){
-      console.log(pagination);
-      this.ipagination = pagination;
-      this.getDataList();
+      console.log(pagination)
+      this.ipagination = pagination
+      this.getDataList()
     },
     onSelectChange (selectedRowKeys) {
-      console.log('selectedRowKeys changed: ', selectedRowKeys);
+      console.log('selectedRowKeys changed: ', selectedRowKeys)
       this.selectedRowKeys = selectedRowKeys
     }
   },
