@@ -18,8 +18,6 @@
     <div class="operate">
       <a-icon type="search" style="font-size: 20px;"/>
       <a-icon type="bell" style="font-size: 20px;"/>
-      <!-- <i class="el-icon-search"></i> -->
-      <!-- <i class="el-icon-bell"></i> -->
       <label class="person">
         <img src="" alt="">
         <span>Jane</span>
