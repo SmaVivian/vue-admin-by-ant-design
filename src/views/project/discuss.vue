@@ -1,17 +1,39 @@
 <template>
-  <div class="page-exhibits">
+  <div class="page-discuss">
     讨论
-    <div class="container" >
-      <p>文本输入框</p>
-      <textarea class="text" rows="5" v-model="content" ></textarea>
-      <p>表情选择框</p>
-      <emotion @emotion="handleEmotion" :height="200" ></emotion>
-      <p>效果显示框</p>
-      <div class="text-place">
-        <!-- /\#[\u4E00-\u9FA5]{1,3}\;/gi 匹配出含 #XXX; 的字段 -->
-        <p v-html="content.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"></p>
+    <div class="discuss-warp">
+      <div class="header">
+        抗联展览项目
+      </div>
+
+      <div class="content clearfix">
+        <div class="item fl">
+          <p>111111111111</p>
+        </div>
+        <div class="item fl">
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet nisi saepe accusantium et expedita ullam aliquid quas excepturi nostrum, distinctio numquam praesentium debitis laboriosam! Mollitia totam rem atque nulla at?</p>
+        </div>
+        <div class="item fr">
+          <p>收两块大家是</p>
+        </div>
+        <div class="item fr">
+          <p>收两块大家是</p>
+        </div>
+      </div>
+
+      <div class="container" >
+        <!-- <p>文本输入框</p> -->
+        <textarea class="text" rows="5" v-model="content" ></textarea>
+        <p>表情选择框</p>
+        <emotion @emotion="handleEmotion" :height="200" ></emotion>
+        <p>效果显示框</p>
+        <div class="text-place">
+          <!-- /\#[\u4E00-\u9FA5]{1,3}\;/gi 匹配出含 #XXX; 的字段 -->
+          <p v-html="content.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"></p>
+        </div>
       </div>
     </div>
+    
   </div>
 </template>
 
