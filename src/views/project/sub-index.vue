@@ -96,12 +96,11 @@ export default {
     position: relative;
     top: 2px;
     min-height: calc(100vh - 116px);
-    padding: 20px;
     box-sizing: border-box;
   }
   .sub-content-wrap {
     width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 }
 </style>

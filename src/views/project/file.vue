@@ -3,7 +3,7 @@
     <div class="btns clearfix">
       <h2 class="fl">文件夹</h2>
       <div class="right fr">
-        <a-button class="g-btns-mr">创建文件夹</a-button>
+        <a-button class="g-btns-mr" @click="addFolder">创建文件夹</a-button>
         <a-button>上传</a-button>
       </div>
     </div>
@@ -16,12 +16,44 @@
       :pagination="false"
       :loading="loading"
       @change="handleTableChange">
+      <span slot="action" slot-scope="text, record">
+        <a class="g-btns-mr" @click="move(record)">移动</a>
+        <a class="g-btns-mr">添加</a>
+        <a>添加2</a>
+      </span>
     </a-table>
+
+    <!-- 新建文件夹弹框 -->
+    <a-modal
+      class="modal-folder"
+      title="新建文件夹"
+      :centered="true"
+      :width="300"
+      okText="创建"
+      v-model="visibleFolder"
+      @ok="handleOk">
+      <a-form :form="form">
+        <a-form-item>
+        <!-- label="Note"
+        :label-col="{ span: 5 }"
+        :wrapper-col="{ span: 12 }" -->
+          <a-input
+            v-decorator="[
+              'note',
+              {rules: [{ required: true, message: '输入文件夹名称' }]}
+            ]"/>
+        </a-form-item>
+      </a-form>
+    </a-modal>
+
+    <file-modal ref="modal"></file-modal>
   </div>
 </template>
 
 <script>
+import fileModal from './modals/file-modal'
 export default {
+  components: { fileModal },
   data() {
     return {
       // 表头
@@ -69,12 +101,12 @@ export default {
           align:"center",
           sorter: true
         },
-        // {
-        //   title: '操作',
-        //   dataIndex: 'action',
-        //   align:"center",
-        //   scopedSlots: { customRender: 'action' },
-        // }
+        {
+          title: '操作',
+          dataIndex: 'action',
+          align:"center",
+          scopedSlots: { customRender: 'action' },
+        }
       ],
       selectedRowKeys: [],
       // 分页参数
@@ -84,9 +116,27 @@ export default {
       },
       list: [],
       loading: true,
+
+      visibleFolder: false,
+      form: this.$form.createForm(this),
     }
   },
   methods: {
+    addFolder() {
+      this.visibleFolder = true
+    },
+    handleOk() {
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values)
+        }
+      })
+      // this.visibleFolder = false
+    },
+    move(item) {
+      this.$refs.modal.init()
+      console.log(item)
+    },
     getDataList() {
       this.loading = true
       this.$http.get('/list', {
@@ -123,5 +173,17 @@ export default {
   }
 }
 </style>
+
+<style lang="scss">
+.modal-folder {
+  .ant-btn-default {
+    display: none;
+  }
+  .ant-btn-primary {
+    width: 100%;
+  }
+}
+</style>
+
 
 

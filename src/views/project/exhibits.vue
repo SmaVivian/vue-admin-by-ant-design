@@ -26,12 +26,12 @@
     </a-table>
     <span>TODO delete {{hasSelected}}</span>
 
-    <exhibits-modals ref="modal"></exhibits-modals>
+    <exhibits-modal ref="modal"></exhibits-modal>
   </div>
 </template>
 
 <script>
-import exhibitsModals from './modals/exhibits-modals'
+import exhibitsModal from './modals/exhibits-modal'
 export default {
   filters: {
     statusFilter(status) {
@@ -44,7 +44,7 @@ export default {
     }
   },
   components: {
-    exhibitsModals
+    exhibitsModal
   },
   data() {
     return {
