@@ -3,21 +3,13 @@
     <div class="g-container" 
       :class="{'header-no': !$store.getters.headerShow, 'bg-none': $store.getters.bodyBg === 'bgNone'}">
       <router-view/>
-      <!-- <cmp-header v-if="$store.getters.headerShow" :headActive="headActive"></cmp-header>
-      <keep-alive>
-        <router-view/>
-      </keep-alive> -->
     </div>
   </div>
 </template>
 
 <script>
-import cmpHeader from '@cmp/Header'
 export default {
   name: 'App',
-  components: {
-    cmpHeader
-  },
   created() {
     console.log(this.$store.getters)
   },
