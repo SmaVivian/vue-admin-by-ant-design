@@ -26,12 +26,11 @@ export default {
       default: ''
     }
   },
-  watch: {
-    // active() {
-    //   this.activeName = this.active
-    //   debugger
-    // }
-  },
+  // computed: {
+  //   activeName() {
+  //     return this.activeTab
+  //   }
+  // },
   data() {
     return {
       activeName: this.activeTab

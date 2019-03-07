@@ -44,7 +44,6 @@ export default {
   },
   data() {
     return {
-      currentTab: 'task',
       tabs: [
         {
           name: '任务',
@@ -70,13 +69,16 @@ export default {
     }
   },
   computed: {
+    currentTab() {
+      return this.$route.query.type
+    },
     currentTabCmp() {
       return this.currentTab + 'Project'
     }
   },
   methods: {
     changeTab(path) {
-      this.currentTab = path;
+      this.$router.replace({path: '/project/sub', query: {type: path}})
     }
   }
 }

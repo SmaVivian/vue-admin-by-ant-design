@@ -122,7 +122,6 @@ export default {
   computed: {
     // todo
     hasSelected() {
-      console.log(22222, this.selectedRowKeys.length)
       return this.selectedRowKeys.length > 0
     }
   },
@@ -137,7 +136,6 @@ export default {
         size: this.ipagination.pageSize
       }).then(response => {
         this.list = response.data.list
-        console.log(this.list)
         this.ipagination.total = response.data.page.allRow
         this.loading = false
       })

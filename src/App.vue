@@ -2,10 +2,11 @@
   <div id="app">
     <div class="g-container" 
       :class="{'header-no': !$store.getters.headerShow, 'bg-none': $store.getters.bodyBg === 'bgNone'}">
-      <cmp-header v-if="$store.getters.headerShow"></cmp-header>
+      <router-view/>
+      <!-- <cmp-header v-if="$store.getters.headerShow" :headActive="headActive"></cmp-header>
       <keep-alive>
         <router-view/>
-      </keep-alive>
+      </keep-alive> -->
     </div>
   </div>
 </template>

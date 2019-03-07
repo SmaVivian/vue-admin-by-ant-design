@@ -2,15 +2,15 @@
   <div class="cmp-header">
     <img class="logo" src="" alt="">
     <a-menu
-    :defaultOpenKeys="[$route.path]"
-    theme="dark"
-    class="menu-top"
-    mode="horizontal"
-    @select="handleSelect"
-    background-color="#001529"
-    text-color="#fff"
-    active-text-color="#6ea8dc">
-      <a-menu-item key="/">首页</a-menu-item>
+      v-model="activeMenu"
+      theme="dark"
+      class="menu-top"
+      mode="horizontal"
+      @click="handleClick"
+      background-color="#001529"
+      text-color="#fff"
+      active-text-color="#6ea8dc">
+      <a-menu-item key="/home">首页</a-menu-item>
       <a-menu-item key="/project">项目</a-menu-item>
       <a-menu-item key="/collect">藏品</a-menu-item>
       <a-menu-item key="/digital">数字资产</a-menu-item>
@@ -30,14 +30,17 @@
 export default {
   name: 'Header',
   data() {
+    
     return {
-      
+      activeMenu: [this.$route.meta.menuPath || this.$route.path]
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.$router.push(key);
-    }
+    handleClick(item) {
+      if(this.$route.path !== item.key) {
+        this.$router.push(item.key)
+      }
+    },
   }
 }
 </script>
