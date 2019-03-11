@@ -20,6 +20,9 @@ module.exports = {
     }
   },
   */
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/yourProjectName/'
+    : '/',
   // publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   // outputDir: 'demo',
   configureWebpack: {},
